@@ -1,12 +1,6 @@
 # Go Coverage Viewer
 
-![Screenshot](screenshot.png "Screenshot")
-
-## How to use this extension
-
-1. Open the Command Panel (Mac = cmd+shift+p)
-2. Search for "Go Coverage"
-3. Select any of our available commands to use
+![Screenshot](https://github.com/defaltd/vscode-go-coverage-viewer/raw/master/screenshot.png "Screenshot")
 
 ## Features
 
@@ -20,4 +14,4 @@ This package requires the Go programming language extension for language support
 
 ## License
 
-[MIT](LICENSE "License")
+[MIT](https://github.com/defaltd/vscode-go-coverage-viewer/blob/master/LICENSE "License")

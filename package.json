@@ -1,48 +1,48 @@
 {
-    "name": "go-coverage-viewer",
-    "displayName": "Go Coverage Viewer",
-    "icon": "images/icon.png",
-    "description": "Go Coverage Viewer is the simplest way to view your code coverage results right inside the editor",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/defaltd/vscode-go-coverage-viewer"
-    },
-    "version": "1.0.2",
-    "publisher": "defaltd",
-    "engines": {
-        "vscode": "^1.23.0"
-    },
-    "extensionDependencies": [
-        "golang.go"
-    ],
-    "categories": [
-        "Other"
-    ],
-    "activationEvents": [
-        "onLanguage:go"
-    ],
-    "main": "./out/extension",
-    "contributes": {
-        "commands": [
-            {
-                "command": "extension.generateCoverage",
-                "title": "Display Results",
-                "category": "Go Coverage"
-            }
-        ]
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "typescript": "^2.8.3",
-        "vscode": "*",
-        "tslint": "^5.10.0",
-        "@types/node": "^10.0.4",
-        "@types/mocha": "^5.2.0"
-    }
+	"name": "go-coverage-viewer",
+	"displayName": "Go Coverage Viewer",
+	"icon": "images/icon.png",
+	"description": "Go Coverage Viewer is the simplest way to view your code coverage results right inside the editor",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/defaltd/vscode-go-coverage-viewer"
+	},
+	"version": "1.0.3",
+	"publisher": "defaltd",
+	"engines": {
+		"vscode": "^1.23.0"
+	},
+	"extensionDependencies": [
+		"golang.go"
+	],
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:go"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.generateCoverage",
+				"title": "Display Results",
+				"category": "Go Coverage"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^2.8.3",
+		"vscode": "*",
+		"tslint": "^5.10.0",
+		"@types/node": "^10.0.4",
+		"@types/mocha": "^5.2.0"
+	}
 }
