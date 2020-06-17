@@ -5,10 +5,10 @@
 	"description": "Go Coverage Viewer is the simplest way to view your code coverage results right inside the editor",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/defaltd/vscode-go-coverage-viewer"
+		"url": "https://github.com/sorenh/vscode-go-coverage-viewer"
 	},
-	"version": "1.0.3",
-	"publisher": "defaltd",
+	"version": "1.0.4",
+	"publisher": "soren",
 	"engines": {
 		"vscode": "^1.23.0"
 	},

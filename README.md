@@ -1,6 +1,6 @@
 # Go Coverage Viewer
 
-![Screenshot](https://github.com/defaltd/vscode-go-coverage-viewer/raw/master/screenshot.png "Screenshot")
+![Screenshot](https://github.com/sorenh/vscode-go-coverage-viewer/raw/master/screenshot.png "Screenshot")
 
 ## Features
 
@@ -14,4 +14,4 @@ This package requires the Go programming language extension for language support
 
 ## License
 
-[MIT](https://github.com/defaltd/vscode-go-coverage-viewer/blob/master/LICENSE "License")
+[MIT](https://github.com/sorenh/vscode-go-coverage-viewer/blob/master/LICENSE "License")
