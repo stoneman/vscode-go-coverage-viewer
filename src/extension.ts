@@ -4,36 +4,19 @@ import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 
-import { GO_MODE } from './goMode';
 import { outputChannel } from './goStatus';
 import { createTestCoverage, generateHtmlCoverage } from './goTest';
 
 export function activate(context: vscode.ExtensionContext) {
     let disposable = vscode.commands.registerCommand('extension.generateCoverage', async () => {
         try {
-            let fileUri: vscode.Uri;
-            outputChannel.clear();
+            if(vscode.workspace.workspaceFolders !== undefined) {
+                const cwd = vscode.workspace.workspaceFolders[0].uri.path;
 
-            if (vscode.window.activeTextEditor) {
-                fileUri = vscode.window.activeTextEditor.document.uri;
+                outputChannel.clear();
 
-                if (!vscode.languages.match(GO_MODE, vscode.window.activeTextEditor.document)) {
-                    vscode.window.showWarningMessage('The current filetype is not supported');
-                    return;
-                }
-
-                const contents = fs.readFileSync(fileUri.fsPath, { encoding: 'utf8' });
-
-                let packageLine = contents.split('\n').shift();
-                let packageName = packageLine ? packageLine.split(' ').pop() : null;
-
-                if (packageName === 'main') {
-                    vscode.window.showErrorMessage('Cannot generate coverage results for main package');
-                }
-
-                const cwd = path.dirname(fileUri.fsPath);
                 const tmpPath = path.normalize(path.join(os.tmpdir(), 'go-coverage'));
-                outputChannel.appendLine(`Generating coverage results for package ${packageName}...`);
+                outputChannel.appendLine('Generating coverage results...');
 
                 if (!fs.existsSync(`${tmpPath}`)) {
                     fs.mkdirSync(`${tmpPath}`);
@@ -51,7 +34,7 @@ export function activate(context: vscode.ExtensionContext) {
 
                 if (testFailed) {
                     outputChannel.appendLine(testFailed.message.toString());
-                    vscode.window.showErrorMessage(`Failed to generate test coverage for package named ${packageName}`);
+                    vscode.window.showErrorMessage('Failed to generate test coverage');
                     outputChannel.show();
                     return;
                 }
@@ -60,18 +43,18 @@ export function activate(context: vscode.ExtensionContext) {
 
                 if (coverageFailed) {
                     outputChannel.appendLine(coverageFailed.message.toString());
-                    vscode.window.showErrorMessage(`Failed to covert test coverage to HTML for package named ${packageName}`);
+                    vscode.window.showErrorMessage('Failed to covert test coverage to HTML');
                     outputChannel.show();
                     return;
                 }
 
                 outputChannel.appendLine(`Displaying Package Coverage from ${tmpPath}/coverage.html`);
                 const coverageHTML = fs.readFileSync(`${tmpPath}/coverage.html`, { encoding: 'utf8' });
-                const viewPanel = vscode.window.createWebviewPanel('goCoverage', `Package [${packageName}]: Coverage Results`, vscode.ViewColumn.Two, { enableScripts: true });
+                const viewPanel = vscode.window.createWebviewPanel('goCoverage', `Coverage Results`, vscode.ViewColumn.One, { enableScripts: true });
 
                 viewPanel.webview.html = coverageHTML;
             } else {
-                vscode.window.showErrorMessage('No active editor was detected');
+                vscode.window.showErrorMessage('No workspace detected, open a folder and try again');
             }
         } catch(error) {
             outputChannel.appendLine(error);

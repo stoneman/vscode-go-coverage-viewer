@@ -5,10 +5,10 @@
 	"description": "Go Coverage Viewer is the simplest way to view your code coverage results right inside the editor",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/sorenh/vscode-go-coverage-viewer"
+		"url": "https://github.com/stoneman/vscode-go-coverage-viewer"
 	},
-	"version": "1.0.4",
-	"publisher": "soren",
+	"version": "1.0.5",
+	"publisher": "stoneman",
 	"engines": {
 		"vscode": "^1.23.0"
 	},
@@ -39,10 +39,10 @@
 		"test": "npm run compile && node ./node_modules/vscode/bin/test"
 	},
 	"devDependencies": {
-		"typescript": "^2.8.3",
-		"vscode": "*",
-		"tslint": "^5.10.0",
+		"@types/mocha": "^5.2.0",
 		"@types/node": "^10.0.4",
-		"@types/mocha": "^5.2.0"
+		"tslint": "^5.10.0",
+		"typescript": "^2.8.3",
+		"vscode": "^1.1.37"
 	}
 }
